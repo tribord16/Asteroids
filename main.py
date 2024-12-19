@@ -35,7 +35,7 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    
+
     while(running):
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running = False
@@ -47,7 +47,10 @@ def main():
             if(asteroid.check_collisions(player)): 
                 print("Game OVER - TRIBORD")
                 running = False
-
+            for bullet in shots:
+                if(asteroid.check_collisions(bullet)):
+                    bullet.kill()
+                    asteroid.kill()
 
         screen.fill("black")
 
